@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Students Information</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #005f99;
+      margin-bottom: 20px;
+    }
+    #summary {
+      max-width: 800px;
+      margin: 0 auto 20px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    #summary h3 {
+      margin-top: 20px;
+      margin-bottom: 10px;
+      color: #005f99;
+    }
+    #summary ul {
+      list-style: none;
+      padding: 0;
+    }
+    #summary li {
+      padding: 5px 0;
+      border-bottom: 1px solid #eee;
+    }
+    #studentsTable {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 8px;
+      overflow-x: auto;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 10px;
+      text-align: center;
+      border: 1px solid #ddd;
+    }
+    th {
+      background-color: #87CEFA;
+      color: #fff;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .delete-btn {
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .delete-btn:hover {
+      background: #c0392b;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Students Information</h1>
+    <div id="summary"></div>
+    <div id="studentsTable"></div>
+  </div>
+
+  <script>
+    // Function to load and display student data and summary
+    function updateStudentsInfo() {
+      // Retrieve stored applications from localStorage; default to empty array if none exist
+      const studentsInformation = JSON.parse(localStorage.getItem("studentsInformation")) || [];
+      
+      // Build summary data
+      const totalCount = studentsInformation.length;
+      const gradeCounts = {};
+      studentsInformation.forEach(student => {
+        const grade = student.grade;
+        if (!gradeCounts[grade]) {
+          gradeCounts[grade] = 0;
+        }
+        gradeCounts[grade]++;
+      });
+      
+      // Build summary HTML
+      let summaryHTML = `<p style="font-size: 1.2rem; font-weight: bold;">Total Applications: ${totalCount}</p>`;
+      summaryHTML += `<h3>Applications by Grade:</h3><ul>`;
+      for (let grade in gradeCounts) {
+        summaryHTML += `<li style="font-size: 1rem;">Grade ${grade}: ${gradeCounts[grade]}</li>`;
+      }
+      summaryHTML += `</ul>`;
+      document.getElementById("summary").innerHTML = summaryHTML;
+      
+      // Build the table of student details
+      let tableHTML = "";
+      if (totalCount > 0) {
+        tableHTML += `<table>
+                        <thead>
+                          <tr>
+                            <th>Email</th>
+                            <th>First Name</th>
+                            <th>Surname</th>
+                            <th>Grade</th>
+                            <th>School</th>
+                            <th>Package Price</th>
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        <tbody>`;
+        studentsInformation.forEach((student, index) => {
+          tableHTML += `<tr>
+                          <td>${student.email}</td>
+                          <td>${student.firstName}</td>
+                          <td>${student.surname}</td>
+                          <td>${student.grade}</td>
+                          <td>${student.school}</td>
+                          <td>${student.packagePrice}</td>
+                          <td>
+                            <button class="delete-btn" data-index="${index}">Delete</button>
+                          </td>
+                        </tr>`;
+        });
+        tableHTML += `</tbody></table>`;
+      } else {
+        tableHTML = `<p style="text-align: center; font-size: 1.2rem;">No applications yet.</p>`;
+      }
+      document.getElementById("studentsTable").innerHTML = tableHTML;
+      
+      // Bind delete button events
+      const deleteButtons = document.querySelectorAll(".delete-btn");
+      deleteButtons.forEach(btn => {
+        btn.addEventListener("click", function() {
+          const idx = this.getAttribute("data-index");
+          deleteStudent(idx);
+        });
+      });
+    }
+    
+    // Function to delete a student application and update the page
+    function deleteStudent(index) {
+      let studentsInformation = JSON.parse(localStorage.getItem("studentsInformation")) || [];
+      // Remove the student at the specified index
+      studentsInformation.splice(index, 1);
+      // Save the updated array back to localStorage
+      localStorage.setItem("studentsInformation", JSON.stringify(studentsInformation));
+      // Update the display
+      updateStudentsInfo();
+    }
+    
+    // Call updateStudentsInfo on page load
+    updateStudentsInfo();
+  </script>
+</body>
+</html>

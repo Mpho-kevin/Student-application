@@ -1,0 +1,973 @@
+tml lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Just Everything Academics</title>
+  <style>
+    /*--------------------------
+      GLOBAL VARIABLES & RESET
+    ---------------------------*/
+   /* Global Variables (Adjust as needed) */
+:root {
+    --dark-blue: #002B59;   /* A deep navy blue */
+    --light-blue: #4F9BCF;  /* Li<!DOCTYPE html>
+<hghter shade of blue */
+    --white: #ffffff;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Cool Header with Gradient & Wave */
+  .cool-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* Subtle gradient from dark to light blue */
+    background: linear-gradient(to right, var(--dark-blue), var(--light-blue));
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 1000;
+    overflow: hidden;
+    /* Pop-in animation on page load */
+    animation: headerPop 0.8s ease-out;
+  }
+  
+  /* Keyframes for a slight pop-in */
+  @keyframes headerPop {
+    0% { transform: translateY(-100%); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+  }
+  
+  /* Inner Header Container */
+  .header-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 10px 20px;
+  }
+  
+  /* Logo Area */
+  .logo-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .site-logo {
+    height: 40px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.3s;
+  }
+  .site-logo:hover {
+    transform: scale(1.05);
+  }
+  .logo-text {
+    font-size: 1.4em;
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+  }
+  .logo-je {
+    color: #000; /* "JE" in black */
+  }
+  .logo-academics {
+    color: var(--white); /* "Academics" in white */
+    margin-left: 4px;
+  }
+  
+  /* Navigation */
+  nav .nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links li {
+    position: relative;
+    overflow: hidden; /* Ensures the circle doesn't overflow outside */
+  }
+  .nav-links a {
+    color: var(--white);
+    font-size: 1em;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition: transform 0.3s;
+    position: relative;
+    z-index: 1; /* Ensure text is above the circle */
+  }
+  
+  /* Circle Hover Effect */
+  .nav-links a::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.5s;
+    z-index: -1; /* Behind the text */
+  }
+  .nav-links a:hover::before {
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .nav-links a:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Social Icons */
+  .social-icons {
+    display: flex;
+    gap: 15px;
+  }
+  .social-icons img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    transition: transform 0.3s;
+  }
+  .social-icons img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Wave at the Bottom of Header */
+  
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .header-container {
+      grid-template-columns: 1fr auto; /* Re-flow on small screens */
+    }
+    .nav-links {
+      gap: 15px;
+    }
+    .logo-text {
+      font-size: 1.2em;
+    }
+  }
+  
+  
+  
+    /* Hero Container with Background Image */
+.hero {
+    position: relative;
+    height: 100vh;
+    background: url('_K9A2072.jpg') no-repeat center center/cover; /* Example image */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* Semi-Transparent Overlay Over the Entire Hero */
+  .hero-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.4); /* Dark overlay at 40% opacity */
+    z-index: 1;
+  }
+  
+  /* Hero Text Container */
+  .hero-content {
+    position: relative;
+    z-index: 2; /* Above the overlay */
+    max-width: 800px;
+    padding: 30px;
+    color: #fff; /* White text for contrast */
+    /* Optional background behind text only:
+    background: rgba(0,0,0,0.3);
+    border-radius: 8px;
+    */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7); /* Additional text clarity */
+  }
+  
+  /* Headline & Paragraph */
+  .hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .hero-content p {
+    font-size: 1.3em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+  }
+  
+  /* CTA Button */
+  .cta-btn {
+    display: inline-block;
+    padding: 15px 30px;
+    background: #87CEEB;  /* Sky Blue */
+    color: #fff;
+    font-size: 1.1em;
+    border-radius: 4px;
+    transition: background 0.3s, transform 0.3s;
+  }
+  
+  .cta-btn:hover {
+    background: #003366; /* Dark Blue on hover */
+    transform: scale(1.05);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .hero-content h1 {
+      font-size: 2.2em;
+    }
+    .hero-content p {
+      font-size: 1em;
+    }
+  }
+  
+  
+    /* Example wave background for hero (optional) */
+    .hero-wave {
+      position: absolute;
+      bottom: -60px;
+      left: 0;
+      width: 100%;
+      line-height: 0;
+    }
+    .hero-wave svg {
+      display: block;
+      width: 100%;
+      height: 80px;
+      fill: var(--white);
+    }
+
+   /* PARTNER LOGOS SECTION */
+.partners {
+    display: flex;              /* Place logos in a row */
+    align-items: center;        /* Vertically center them */
+    justify-content: space-between; /* Distribute logos evenly horizontally */
+    gap: 50px;                  /* Maintain same gap between logos */
+    max-width: 1400px;          /* Set a maximum width for the container */
+    margin: 0 auto;             /* Center the container horizontally */
+    padding: 40px 20px;         /* Top/bottom and side spacing */
+    background: #fff;           /* Optional background color */
+  }
+  
+  .partners img {
+    max-height: 130px;          /* Uniform logo height */
+    width: auto;                /* Maintain aspect ratio */
+    object-fit: contain;        /* Ensure the entire logo is visible */
+    transition: transform 0.3s; /* Smooth hover animation */
+  }
+  
+  .partners img:hover {
+    transform: scale(1.05);     /* Slight enlargement on hover */
+  }
+
+  /* CSS: Logo & Text Styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .site-logo {
+    height: 50px; /* Adjust as needed */
+    width: auto;
+    object-fit: contain;
+    margin-right: 10px; /* Space between the image and text */
+  }
+  
+  .logo-text {
+    font-size: 1.5em; /* Adjust font size as desired */
+    font-weight: bold;
+    display: flex;
+    align-items: baseline;
+  }
+  
+  /* "JE" in black */
+  .logo-je {
+    color: #000; 
+  }
+  
+  /* "Academics" in blue */
+  .logo-academics {
+    color: #003366;
+    margin-left: 4px; /* Small space before 'Academics' */
+  }
+  
+  
+  
+
+    /*--------------------------
+      INTEGRATED SOLUTIONS / WHY US
+    ---------------------------*/
+    /* WHY CHOOSE SECTION WITH BLUE THEME */
+.why-jea {
+    position: relative;
+    background: linear-gradient(135deg, #003366 0%, #e6f0ff 100%);
+    padding: 100px 20px 80px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* Wave Top Decoration */
+  .wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .wave-top svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* Heading */
+  .why-jea h2 {
+    position: relative;
+    z-index: 2;
+    font-size: 2.2em;
+    margin-bottom: 50px;
+    color: #ffffff;
+  }
+  
+  /* Grid for cards */
+  .why-grid {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+  }
+  
+  /* Individual card styling */
+  .why-card {
+    background: #ffffff;
+    color: #333;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .why-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  
+  /* Icons (optional emojis or use real icons) */
+  .why-card .icon {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    color: #003366;
+  }
+  
+  .why-card h3 {
+    color: #003366;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+  }
+  
+  .why-card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+  
+
+    /*--------------------------
+      CURVED SEPARATORS
+    ---------------------------*/
+    .curve-separator {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+    .curve-separator svg {
+      display: block;
+      width: calc(100% + 1.3px);
+      height: 100px;
+      animation: wave 6s infinite ease-in-out;
+    }
+    @keyframes wave {
+      0% { transform: translateX(0); }
+      50% { transform: translateX(-25%); }
+      100% { transform: translateX(0); }
+    }
+
+    /*--------------------------
+      SUBJECTS SECTION
+    ---------------------------*/
+    .subjects {
+      position: relative;
+      padding: 80px 20px;
+      text-align: center;
+      color: #003366;
+      background: url('education-is-important.jpg') no-repeat center center/cover;
+      margin-top: 60px;
+    }
+    .subjects::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: #000;
+      opacity: 0.5;
+      z-index: 1;
+    }
+    .subjects > * {
+      position: relative;
+      z-index: 2;
+    }
+    .subjects h2 {
+      font-size: 2.2em;
+      margin-bottom: 40px;
+      color: var(--white);
+    }
+    .subject-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .subject-card {
+      background: var(--white);
+      color: var(--primary-color);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .subject-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+    .subject-card h3 {
+      font-size: 1.3em;
+      margin-bottom: 10px;
+    }
+    .subject-card p {
+      font-size: 0.95em;
+      line-height: 1.5;
+      color: var(--text-color);
+    }
+
+    /*--------------------------
+      GALLERY SECTION
+    ---------------------------*/
+/* Gallery Section */
+.gallery {
+  position: relative;
+  /* Darker blue gradient background */
+  background: linear-gradient(135deg, #003366 0%, #ffffff 100%);
+  text-align: center;
+  padding: 80px 20px;
+  overflow: hidden;
+}
+
+/* Section Heading */
+.gallery h2 {
+  position: relative;
+  z-index: 2; /* Above wave */
+  font-size: 2em;
+  color: #003366; /* Dark blue */
+  margin-bottom: 50px;
+}
+
+/* Optional Wave at the top of the gallery section */
+.gallery-wave-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px; /* Adjust as needed */
+  overflow: hidden;
+  z-index: 1;
+}
+.gallery-wave-top svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  position: relative;
+  z-index: 2; /* Above the wave */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Each Image Card */
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.4s, box-shadow 0.4s;
+  background: #fff;
+}
+
+/* Image styling and hover effect */
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.4s;
+  border-radius: 8px;
+}
+
+/* On hover, gently scale the card and the image */
+.gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+.gallery-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .gallery h2 {
+    font-size: 1.6em;
+  }
+  .gallery-item {
+    margin-bottom: 20px;
+  }
+}
+
+
+    /*--------------------------
+      CONTACT SECTION
+    ---------------------------*/
+   /* Contact & Location Section */
+.contact-section {
+    position: relative;
+    /* A lively gradient background, adjust as desired */
+    background: linear-gradient(135deg, #003366 0%, #87CEEB 100%);
+    padding: 80px 20px;
+    text-align: center;
+    overflow: hidden;
+  }
+  
+  /* Wave at the Top */
+  .contact-wave-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px; /* Adjust as needed */
+    overflow: hidden;
+    z-index: 1;
+  }
+  .contact-wave-top svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  
+  /* Main Content Container */
+  .contact-content {
+    position: relative;
+    z-index: 2; /* Above wave */
+    max-width: 1200px;
+    margin: 0 auto;
+    color: #fff; /* White text for contrast on dark gradient */
+  }
+  
+  /* Section Heading */
+  .contact-content h2 {
+    font-size: 2em;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+  }
+  
+  /* Contact Grid Layout */
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    justify-items: center;
+    margin-bottom: 40px;
+  }
+  
+  /* Each Contact Card */
+  .contact-card {
+    background: #fff;  /* White card on gradient background */
+    color: #333;
+    width: 100%;
+    max-width: 300px;
+    padding: 30px 20px;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+  }
+  
+  .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  }
+  
+  /* Icon inside card */
+  .contact-card img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    margin-bottom: 15px;
+  }
+  
+  /* Card Headline & Paragraph */
+  .contact-card h3 {
+    font-size: 1.2em;
+    color: #003366; /* Dark Blue text */
+    margin-bottom: 10px;
+  }
+  .contact-card p {
+    font-size: 0.95em;
+    line-height: 1.5;
+  }
+  
+  /* CTA Text */
+  .contact-cta {
+    font-size: 1.1em;
+    margin-top: 20px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .contact-card {
+      max-width: 100%;
+    }
+    .contact-content h2 {
+      font-size: 1.6em;
+    }
+    .contact-card h3 {
+      font-size: 1.1em;
+    }
+  }
+  
+
+    /*--------------------------
+      FOOTER
+    ---------------------------*/
+    footer {
+      background: var(--primary-color);
+      color: var(--white);
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 60px;
+    }
+
+    /*--------------------------
+      SCROLL REVEAL 
+    ---------------------------*/
+    section {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /*--------------------------
+      RESPONSIVE ADJUSTMENTS
+    ---------------------------*/
+    @media (max-width: 992px) {
+      .hero-left h1 { font-size: 2.5em; }
+      .hero-left p { font-size: 1em; }
+    }
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-left, .hero-right {
+        flex: 1 1 100%;
+        padding: 10px;
+      }
+      .hero-left h1 { font-size: 2.2em; }
+      .why-us, .subjects, .gallery, .contact {
+        padding: 60px 15px;
+      }
+
+      
+    }
+  </style>
+</head>
+<body>
+<!-- HTML HEADER SECTION -->
+<!-- HTML HEADER SECTION -->
+<header class="cool-header">
+    <div class="header-container">
+      <!-- Logo Area -->
+      <div class="logo-area">
+        <!-- Replace with your actual logo -->
+        <img src="logo.png" alt="JE Academics Logo" class="site-logo" />
+        <div class="logo-text">
+          <span class="logo-je">JE</span>
+          <span class="logo-academics">Academics</span>
+        </div>
+      </div>
+      
+      <!-- Navigation -->
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#why-us">Why Us</a></li>
+          <li><a href="#subjects">Subjects</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      
+      <!-- Social Icons -->
+      <div class="social-icons">
+        <!-- Replace with your actual social links & icon paths -->
+        <a href="https://www.instagram.com/je_academics" target="_blank">
+          <img src="instagram.png" alt="Instagram" />
+        </a>
+        <a href="https://www.tiktok.com/@je_academics?_t=ZM-8vEMvMVh7bD&_r=1" target="_blank">
+          <img src="tiktok.png" alt="TikTok" />
+        </a>
+      </div>
+    </div>
+    
+    <!-- Wave at the Bottom -->
+    <div class="header-wave">
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <!-- A gentle wave that won't cover the text area too much -->
+        <path fill="#fff" d="M0,80 C480,20 960,140 1440,60 L1440,0 L0,0 Z"></path>
+      </svg>
+    </div>
+  </header>
+  
+  
+
+  <!-- Hero Section with Background Image -->
+<!-- Hero Section -->
+<section class="hero" id="hero">
+    <!-- Optional main overlay to darken/lighten the entire hero background -->
+    <div class="hero-overlay"></div>
+  
+    <div class="hero-content">
+      <h1>Perfect Displays of Academic Excellence</h1>
+      <p>Providing personalized tutoring solutions to help you achieve top performance in Maths, Science, English, and Afrikaans.</p>
+      <a href="http://127.0.0.1:5500/Application.html" class="cta-btn">APPLY NOW</a>
+
+    </div>
+  </section>
+  
+  
+
+  <!-- PARTNERS / BRAND LOGOS (OPTIONAL) -->
+  <div class="partners">
+    <!-- Replace with relevant brand/partner logos or remove if not needed -->
+    <img src="download.png" alt="Partner 1" />
+    <img src="Akasia.jpeg" alt="Partner 2" />
+    <img src="jea.png" alt="Partner 3" />
+    <img src="hillview.png" alt="Partner 4" />
+  </div>
+
+  <!-- INTEGRATED SOLUTIONS / WHY US -->
+  <section class="why-jea" id="why-us">
+    <!-- Top wave decoration -->
+    <div class="wave-top">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"></path>
+      </svg>
+    </div>
+  
+    <h2>Why Choose Just Everything Academics?</h2>
+  
+    <div class="why-grid">
+      <div class="why-card">
+        <i class="icon">🏫</i>
+        <h3>Expert Faculty</h3>
+        <p>Our seasoned educators bring a wealth of knowledge, ensuring every session is engaging and effective.</p>
+      </div>
+      <div class="why-card">
+        <i class="icon">👥</i>
+        <h3>Customized Approach</h3>
+        <p>Lessons are tailored to each student’s needs, promoting deeper understanding and lasting confidence.</p>
+      </div>
+      <div class="why-card">
+        <i class="icon">💡</i>
+        <h3>Innovative Methods</h3>
+        <p>We use modern teaching techniques and tools that spark curiosity and drive academic success.</p>
+      </div>
+      <div class="why-card">
+        <i class="icon">📈</i>
+        <h3>Proven Track Record</h3>
+        <p>Countless students have achieved excellent results and personal growth through our programs.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- CURVED SEPARATOR -->
+  <div class="curve-separator">
+    <svg viewBox="0 0 1440 100"><path fill="var(--white)" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z"></path></svg>
+  </div>
+
+  
+
+  <!-- SUBJECTS SECTION -->
+  <section class="subjects" id="subjects">
+    <h2>Subjects We Cover</h2>
+    <div class="subject-cards">
+      <div class="subject-card">
+        <h3>Maths</h3>
+        <p>From foundational concepts to advanced problem-solving, we equip students with robust math skills.</p>
+      </div>
+      <div class="subject-card">
+        <h3>Physical Science</h3>
+        <p>Interactive lessons in physics and chemistry that clarify complex concepts and fuel scientific curiosity.</p>
+      </div>
+      <div class="subject-card">
+        <h3>English</h3>
+        <p>Enhance language proficiency, critical thinking, and communication through expert tutoring.</p>
+      </div>
+      <div class="subject-card">
+        <h3>Afrikaans</h3>
+        <p>Dedicated guidance to strengthen Afrikaans reading, writing, and conversational abilities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CURVED SEPARATOR -->
+  <div class="curve-separator">
+    <svg viewBox="0 0 1440 100"><path fill="var(--white)" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z"></path></svg>
+  </div>
+
+  <!-- GALLERY SECTION -->
+  <section class="gallery" id="gallery">
+    <h2>Our Learning Environment</h2>
+    
+    <!-- Optional Wave at the top of the gallery section -->
+    <div class="gallery-wave-top">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <!-- Example wave path -->
+        <path fill="#ffffff" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"></path>
+      </svg>
+    </div>
+  
+    <div class="gallery-grid">
+      <!-- Wrap each image in a "gallery-item" for hover effects -->
+      <div class="gallery-item">
+        <img src="_K9A2072.jpg" alt="Tutoring Session 1" />
+      </div>
+      <div class="gallery-item">
+        <img src="_K9A2090.jpg" alt="Tutoring Session 2" />
+      </div>
+      <div class="gallery-item">
+        <img src="_K9A2094.jpg" alt="Tutoring Session 3" />
+      </div>
+      <div class="gallery-item">
+        <img src="_K9A2120.jpg" alt="Tutoring Session 4" />
+      </div>
+      <!-- Add more items as needed -->
+    </div>
+  </section>
+  
+
+  <!-- CURVED SEPARATOR -->
+  <div class="curve-separator">
+    <svg viewBox="0 0 1440 100"><path fill="var(--white)" d="M0,0 C480,100 960,0 1440,100 L1440,100 L0,100 Z"></path></svg>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section" id="contact">
+    <!-- Optional wave at the top for a dynamic transition -->
+    <div class="contact-wave-top">
+      <svg viewBox="0 0 1440 100" preserveAspectRatio="none">
+        <path fill="#fff" d="M0,50 C360,0 1080,100 1440,50 L1440,100 L0,100 Z"></path>
+      </svg>
+    </div>
+    
+    <div class="contact-content">
+      <h2>Contact &amp; Location</h2>
+      
+      <div class="contact-grid">
+        <!-- Address Card -->
+        <div class="contact-card">
+          <!-- Replace with your own icon or an SVG -->
+          <img src="maps-pin-black-icon.png" alt="Location Icon" />
+          <h3>Address</h3>
+          <p>9 Oscarina Crescent, Clarina</p>
+        </div>
+        
+        <!-- Email Card -->
+        <div class="contact-card">
+          <img src="envelope-open-icon.png" alt="Email Icon" />
+          <h3>Email</h3>
+          <p>
+            <a href="mailto:info@justeverythingacademics.com">
+              info@justeverythingacademics.com
+            </a>
+          </p>
+        </div>
+        
+        <!-- Phone Card -->
+        <div class="contact-card">
+          <img src="contact-book-icon.png" alt="Phone Icon" />
+          <h3>Phone</h3>
+          <p>(Insert your phone number)</p>
+        </div>
+      </div>
+      
+      <p class="contact-cta">
+        Reach out to us to begin your journey toward academic excellence.
+      </p>
+    </div>
+  </section>
+  
+
+  <!-- FOOTER -->
+  <footer>
+    <p>&copy; 2025 Just Everything Academics. All rights reserved.</p>
+  </footer>
+
+  <!-- SCROLL REVEAL SCRIPT -->
+  <script>
+    // Reveal sections on scroll
+    const sections = document.querySelectorAll("section");
+    const revealSection = (entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    };
+    const sectionObserver = new IntersectionObserver(revealSection, { root: null, threshold: 0.2 });
+    sections.forEach(section => sectionObserver.observe(section));
+  </script>
+</body>
+</html>
+
+
+
+
